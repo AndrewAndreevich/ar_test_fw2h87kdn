@@ -27,10 +27,19 @@
 //file:///C:/Users/Andrey Andreevich/Downloads/ar(1)/index.html?marker=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/asset.png&object=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt
 
             window.onload = function() {
+                console.log("Hello 3");
                    //when the document is finished loading, replace everything
                    //between the <a ...> </a> tags with the value of splitText
-               document.getElementById("animated-marker").url=marker;
-               document.getElementById("ar-object").src=object;
+               var markerEl = document.getElementById("animated-marker");
+               markerEl.setAttribute("url", marker); 
+               console.log(markerEl);
+
+               var objectEl = document.getElementById("ar-object");
+               objectEl.setAttribute("src", object); 
+               console.log(objectEl);
+
+
+              // document.getElementById("ar-object").src=object;
             } 
 
             
