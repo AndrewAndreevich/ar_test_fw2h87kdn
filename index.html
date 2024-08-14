@@ -5,34 +5,36 @@
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+
         <script>
-
-            function GetURLParameter(sParam)
-            {
-                var sPageURL = window.location.search.substring(1);
-                var sURLVariables = sPageURL.split('&');
-                for (var i = 0; i < sURLVariables.length; i++) 
-                {
-                    var sParameterName = sURLVariables[i].split('=');
-                    if (sParameterName[0] == sParam) 
-                    {
-                        return sParameterName[1];
-                    }
-                }
-            }​
-            
             console.log("Hello");
+            function sayHello() {
+                alert("Hello, World!");
+            }
 
+            const queryString = window.location.search;
+            console.log(queryString);
+            const urlParams = new URLSearchParams(queryString);
+            console.log(urlParams);
+            const marker = urlParams.get('marker');
+            const object = urlParams.get('object');
+            
+            console.log(marker);
+            console.log(object);
+            
+//file:///C:/Users/Andrey Andreevich/Downloads/ar(1)/index.html?marker=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/asset.png&object=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt
 
-            var markerURL = GetURLParameter('markerURL');
-            var objectURL = GetURLParameter('objectURL');
+            window.onload = function() {
+                   //when the document is finished loading, replace everything
+                   //between the <a ...> </a> tags with the value of splitText
+               document.getElementById("animated-marker").url=marker;
+               document.getElementById("ar-object").src=object;
+            } 
 
-            console.log(markerURL);
-            console.log(objectURL);
             
         </script>
-
-        
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -48,14 +50,15 @@
                 id="animated-marker"
                 type="pattern"
                 preset="custom"
-                url="assets/marker.patt"
+                url=""
                 raycaster="objects: .clickable"
                 emitevents="true"
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
             >
                 <a-image
-                    src="assets/asset.png"
+                    id="ar-object"
+                    src=""
                     scale="1 1 1"
                     class="clickable"
                     rotation="-90 0 0"
