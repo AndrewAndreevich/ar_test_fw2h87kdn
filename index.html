@@ -48,6 +48,18 @@
 
             
         </script>
+
+<script>
+  // JavaScript for click interaction
+  const box = document.querySelector('#ar-object');
+  box.addEventListener('click', function () {
+    alert('Box clicked!');
+    // Perform any action like redirecting or changing the scene
+  });
+</script>
+
+
+
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -75,7 +87,6 @@
                     scale="1 1 1"
                     class="clickable"
                     rotation="-90 0 0"
-                    gesture-handler
                 ></a-image>
             </a-marker>
 
