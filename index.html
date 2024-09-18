@@ -1,96 +1,33 @@
-<!doctype html>
+<!doctype HTML>
 <html>
     <head>
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-
-        <script>
-            console.log("Hello");
-            function sayHello() {
-                alert("Hello, World!");
-            }
-
-            const queryString = window.location.search;
-            console.log(queryString);
-            const urlParams = new URLSearchParams(queryString);
-            console.log(urlParams);
-            const marker = urlParams.get('marker');
-            const object = urlParams.get('object');
-            
-            console.log(marker);
-            console.log(object);
-            
-//file:///C:/Users/Andrey Andreevich/Downloads/ar(1)/index.html?marker=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/asset.png&object=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt
-
-            window.onload = function() {
-                console.log("Hello 3");
-                   //when the document is finished loading, replace everything
-                   //between the <a ...> </a> tags with the value of splitText
-               var markerEl = document.getElementById("animated-marker");
-               markerEl.setAttribute("url", marker); 
-               console.log(markerEl);
-
-               var objectEl = document.getElementById("ar-object");
-               objectEl.setAttribute("src", object); 
-               console.log(objectEl);
-
-
-              // document.getElementById("ar-object").src=object; trackingMethod: best; sourceType: webcam; debugUIEnabled: false; 
-
-               
-
-        
-            } 
-
-            
-        </script>
-
-<script>
-  // JavaScript for click interaction
-  const box = document.querySelector('#ar-object');
-  box.addEventListener('click', function () {
-    alert('Box clicked!');
-    // Perform any action like redirecting or changing the scene
-  });
-</script>
-
-
-
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     </head>
+    <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    
+    <!-- import events.js script -->
+    <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
+    
+    <body style='margin : 0px; overflow: hidden;'>
+        <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+        <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
 
-    <body style="margin: 0; overflow: hidden;">
-        <a-scene
-            vr-mode-ui="enabled: false;"
-            loading-screen="enabled: false;"
-            arjs="sourceWidth: 1024; sourceHeight: 776; displayWidth: 1024; displayHeight: 776;"
-            id="scene"
-            embedded
-            gesture-detector
-        >
-            <a-marker
-                id="animated-marker"
-                type="pattern"
-                preset="custom"
-                url=""
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
-            >
-                <a-image
-                    id="ar-object"
-                    src=""
-                    scale="1 1 1"
-                    class="clickable"
-                    rotation="-90 0 0"
-                ></a-image>
-            </a-marker>
+        <a-assets>
+            <a-asset-item id="animated-asset" src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/models/CesiumMan.gltf"></a-asset-item>
+        </a-assets>
 
-            <a-entity camera></a-entity>
+        <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='barcode' value='6'>
+            <a-entity
+                id="animated-model"
+                gltf-model="#animated-asset"
+                scale="2">
+            </a-entity>
+        </a-marker>
+
+        <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+        <a-entity camera></a-entity>
         </a-scene>
     </body>
 </html>
