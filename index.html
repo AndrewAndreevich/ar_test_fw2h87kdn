@@ -25,6 +25,7 @@ init: function() {
             var message = document.querySelector("#messageText").value;
             // Send `message` to the parent using the postMessage method on the window.parent reference.
             window.parent.postMessage(message, "*");
+            alert("click");
         }
     });
 }});
