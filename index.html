@@ -26,7 +26,7 @@ init: function() {
     
             // Send `message` to the parent using the postMessage method on the window.parent reference.
             clickCount+=1;
-            window.parent.postMessage("message "+clickCount, "*");
+            window.parent.postMessage("message "+ globalThis.clickCount, "*");
             
         }
     });
