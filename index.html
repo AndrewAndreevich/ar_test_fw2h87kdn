@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html>
     <head>
-        <meta name="viewport" content=" user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     </head>
     <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
     <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
@@ -35,7 +35,7 @@ init: function() {
 }});
     </script>
     
-    <body >
+    <body style='margin : 0px; '>
         <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
         <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
