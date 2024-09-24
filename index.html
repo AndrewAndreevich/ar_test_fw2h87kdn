@@ -28,7 +28,7 @@ init: function() {
             clickCount+=1;
             //window.parent.postMessage("message "+ globalThis.clickCount, "*");
 
-            document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
+           //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
             document.querySelector("#animated-model").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
         }
     });
@@ -52,7 +52,8 @@ init: function() {
             rotation="-90 0 0"
             ></a-image>
 
-            <a-entity id="debugText" position="1 1 0" scale="3 3 3" rotation="-90 0 0" text="value: HELLO;color:red"></a-entity>
+            <a-entity id="debugTitle" position="1 1 0" scale="3 3 3" rotation="-90 0 0" text="value: ar marker ;color:white"></a-entity>
+            <a-entity id="debugText" position="1 0 0" scale="3 3 3" rotation="-90 0 0" text="value: status ;color:white"></a-entity>
 
             
         </a-marker>
