@@ -9,6 +9,7 @@
     
     <!-- import events.js script -->
     <script>
+        var clickCount = 0;
         AFRAME.registerComponent('markerhandler', {
 
 init: function() {
@@ -24,7 +25,8 @@ init: function() {
             // aEntity.setAttribute('scale', scale);
     
             // Send `message` to the parent using the postMessage method on the window.parent reference.
-            window.parent.postMessage("message", "*");
+            clickCount+=1;
+            window.parent.postMessage("message "+clickCount, "*");
             
         }
     });
