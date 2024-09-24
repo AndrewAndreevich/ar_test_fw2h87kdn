@@ -27,6 +27,8 @@ init: function() {
             // Send `message` to the parent using the postMessage method on the window.parent reference.
             clickCount+=1;
             window.parent.postMessage("message "+ globalThis.clickCount, "*");
+
+            document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
             
         }
     });
@@ -50,7 +52,7 @@ init: function() {
             rotation="-90 0 0"
             ></a-image>
 
-            <a-entity position="1 0 0" scale="3 3 3" rotation="-90 0 0" text="value: HELLO;color:red"></a-entity>
+            <a-entity id="debugText" position="1 2 0" scale="3 3 3" rotation="-90 0 0" text="value: HELLO;color:red"></a-entity>
 
             
         </a-marker>
