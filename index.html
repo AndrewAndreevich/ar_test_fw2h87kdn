@@ -137,7 +137,9 @@ var allowClick = false;
         <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern"  preset="custom" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt" >
 
 
-            <a-box  id="animated-model" color="skyblue" change-color-on-hover="color: blue" >
+            <a-box  id="animated-model" color="skyblue" 
+            event-set__enter="_event: mouseenter; material.color: yellowgreen; scale: 3 1 1"
+            event-set__leave="_event: mouseleave; material.color: skyblue; scale: 1 1 1">
             </a-box>
 
 
