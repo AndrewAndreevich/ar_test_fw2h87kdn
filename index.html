@@ -75,6 +75,7 @@ var allowClick = false;
             this.el.sceneEl.addEventListener('markerFound', () => {
               // redirect to custom URL
               document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
+
             });
 
             this.el.sceneEl.addEventListener('markerLost', () => {
@@ -149,7 +150,7 @@ var allowClick = false;
         
 
         <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
-        <a-camera><a-cursor></a-cursor></a-camera>
+        <a-marker-camera><a-cursor></a-cursor></a-marker-camera>
         </a-scene>
     </body>
 </html>
