@@ -15,6 +15,19 @@
     <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
     <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
+
+
+    <script>
+
+
+
+      </script>
+
+
+
+
+
     
     <!-- import events.js script -->
     <!-- <script>
@@ -46,9 +59,41 @@ init: function() {
 
 
 
+    
+
+
+
 <script>
 
 var clickCount = 0;
+var allowClick = false;
+
+
+
+    AFRAME.registerComponent('markerhandler', {
+          init: function () {
+            this.el.sceneEl.addEventListener('markerFound', () => {
+              // redirect to custom URL
+              document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
+            });
+
+            this.el.sceneEl.addEventListener('markerLost', () => {
+              // redirect to custom URL
+              document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
+            });
+
+        }});
+
+
+
+        
+
+
+        //
+
+
+
+
 
     AFRAME.registerComponent('change-color-on-hover', {
       schema: {
@@ -56,6 +101,7 @@ var clickCount = 0;
       },
   
       init: function () {
+
         var data = this.data;
         var el = this.el;  // <a-box>
         var defaultColor = el.getAttribute('material').color;
@@ -66,8 +112,6 @@ var clickCount = 0;
            // window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
            //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
             document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
-
-
         });
   
         el.addEventListener('mouseleave', function () {
@@ -96,7 +140,7 @@ var clickCount = 0;
             change-color-on-hover="color: blue"
             ></a-image>
 
-            <a-entity id="debugTitle" position="1.5 0 -0.1" scale="2 2 2" rotation="-90 0 0" text="value: ar marker ;color:black"></a-entity>
+            <a-entity id="debugTitle" position="1.5 0 -0.1" scale="2 2 2" rotation="-90 0 0" text="value: marker not there ;color:black"></a-entity>
             <a-entity id="debugText"  position="1.5 0 0" scale="2 2 2" rotation="-90 0 0" text="value: status ;color:white"></a-entity>
             
             
@@ -105,7 +149,7 @@ var clickCount = 0;
         
 
         <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
-        <a-entity camera></a-entity>
+        <a-camera><a-cursor></a-cursor></a-camera>
         </a-scene>
     </body>
 </html>
