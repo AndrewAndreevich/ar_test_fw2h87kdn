@@ -35,7 +35,7 @@ init: function() {
     
             // Send `message` to the parent using the postMessage method on the window.parent reference.
             clickCount+=1;
-            window.parent.postMessage("message "+ globalThis.clickCount, "*");
+            window.parent.postMessage("message "+ globalThis.clickCount+" env = "+ev+" target = "+target , "*");
 
            //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
             document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
