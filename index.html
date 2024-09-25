@@ -135,14 +135,12 @@ var allowClick = false;
         </a-assets>
 
         <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern"  preset="custom" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt" >
-            <a-image
-            id="animated-model"
-            src="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/asset.png"
-            scale="1 1 1"
-            class="clickable"
-            rotation="-90 0 0"
-            change-color-on-hover="color: blue"
-            ></a-image>
+
+
+            <a-box  id="animated-model" color="skyblue" change-color-on-hover="color: blue" >
+            </a-box>
+
+
 
             <a-entity id="debugTitle" position="1.5 0 -0.1" scale="2 2 2" rotation="-90 0 0" text="value: marker not there ;color:black"></a-entity>
             <a-entity id="debugText"  position="1.5 0 0" scale="2 2 2" rotation="-90 0 0" text="value: status ;color:white"></a-entity>
