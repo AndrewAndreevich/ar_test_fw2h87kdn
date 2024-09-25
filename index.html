@@ -75,12 +75,13 @@ var allowClick = false;
             this.el.sceneEl.addEventListener('markerFound', () => {
               // redirect to custom URL
               document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
-
+                allowClick = true;
             });
 
             this.el.sceneEl.addEventListener('markerLost', () => {
               // redirect to custom URL
               document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
+              allowClick = false;
             });
 
         }});
@@ -111,11 +112,17 @@ var allowClick = false;
         
   
         el.addEventListener('click', function () {
-          el.setAttribute('color', data.color);
+            if(allowClick)
+        {
+
+            el.setAttribute('color', data.color);
           clickCount+=1;
            // window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
            //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
             document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
+
+        }
+        
         });
   
        //el.addEventListener('mouseleave', function () {
