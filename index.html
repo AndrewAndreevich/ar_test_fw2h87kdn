@@ -19,10 +19,39 @@
 
 
     <script>
+        console.log("Hello");
+        function sayHello() {
+            alert("Hello, World!");
+        }
 
+        const queryString = window.location.search;
+        console.log(queryString);
+        const urlParams = new URLSearchParams(queryString);
+        console.log(urlParams);
+        const marker = urlParams.get('marker');
+        const object = urlParams.get('object');
+        
+        console.log(marker);
+        console.log(object);
+        
+//file:///C:/Users/Andrey Andreevich/Downloads/ar(1)/index.html?marker= https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/asset.png&object=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt
 
+        window.onload = function() {
+            console.log("Hello 3");
+               //when the document is finished loading, replace everything
+               //between the <a ...> </a> tags with the value of splitText
+           var markerEl = document.getElementById("animated-marker");
+           markerEl.setAttribute("url", marker); 
+           console.log(markerEl);
 
-      </script>
+           var objectEl = document.getElementById("animated-model");
+           objectEl.setAttribute("src", object); 
+           console.log(objectEl);
+
+        } 
+
+        
+    </script>
 
 
 
@@ -130,6 +159,18 @@ var allowClick = false;
        //});
       }
     });
+
+
+
+
+
+
+
+
+
+
+
+     
   </script>
 
     
@@ -148,8 +189,6 @@ var allowClick = false;
         <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern"  preset="custom" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt" >
 
 
-           
-                
                 <a-entity
                 id="animated-model"
                 change-color-on-hover="color: blue"
@@ -158,16 +197,10 @@ var allowClick = false;
                 gltf-model="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
                 ></a-entity>
 
-               
-
-         
-
             
             <a-entity id="debugTitle" position="1.5 0 -0.1" scale="2 2 2" rotation="-90 0 0" text="value: marker not there ;color:black"></a-entity>
             <a-entity id="debugText"  position="1.5 0 0" scale="2 2 2" rotation="-90 0 0" text="value: status ;color:white"></a-entity>
         </a-marker>
-
-        
 
         <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
         <a-entity camera></a-entity>
