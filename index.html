@@ -63,7 +63,7 @@ var clickCount = 0;
         el.addEventListener('mousedown', function () {
           el.setAttribute('color', data.color);
           clickCount+=1;
-            window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
+           // window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
            //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
             document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
 
