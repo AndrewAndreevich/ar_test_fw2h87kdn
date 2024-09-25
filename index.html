@@ -110,7 +110,7 @@ var allowClick = false;
 
         
   
-        el.addEventListener('mousedown', function () {
+        el.addEventListener('click', function () {
           el.setAttribute('color', data.color);
           clickCount+=1;
            // window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
@@ -118,9 +118,9 @@ var allowClick = false;
             document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
         });
   
-        el.addEventListener('mouseleave', function () {
-          el.setAttribute('color', defaultColor);
-        });
+       //el.addEventListener('mouseleave', function () {
+       //  el.setAttribute('color', defaultColor);
+       //});
       }
     });
   </script>
@@ -137,9 +137,7 @@ var allowClick = false;
         <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern"  preset="custom" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt" >
 
 
-            <a-box  id="animated-model" color="skyblue" 
-            event-set__enter="_event: mouseenter; material.color: yellowgreen; scale: 3 1 1"
-            event-set__leave="_event: mouseleave; material.color: skyblue; scale: 1 1 1">
+            <a-box  id="animated-model" color="skyblue" change-color-on-hover="color: blue" >
             </a-box>
 
 
