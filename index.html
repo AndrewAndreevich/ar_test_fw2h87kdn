@@ -17,8 +17,8 @@
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     
     <!-- import events.js script -->
-    <script>
-        var clickCount = 0;
+    <!-- <script>
+       
         AFRAME.registerComponent('markerhandler', {
 
 init: function() {
@@ -35,14 +35,48 @@ init: function() {
     
             // Send `message` to the parent using the postMessage method on the window.parent reference.
             clickCount+=1;
-            window.parent.postMessage("message "+ globalThis.clickCount+" env = "+ev+" target = "+target , "*");
+            window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
 
            //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
             document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
         }
     });
 }});
-    </script>
+    </script> -->
+
+
+
+<script>
+
+var clickCount = 0;
+
+    AFRAME.registerComponent('change-color-on-hover', {
+      schema: {
+        color: {default: 'red'}
+      },
+  
+      init: function () {
+        var data = this.data;
+        var el = this.el;  // <a-box>
+        var defaultColor = el.getAttribute('material').color;
+  
+        el.addEventListener('mousedown', function () {
+          el.setAttribute('color', data.color);
+          clickCount+=1;
+            window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
+           //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
+            document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
+
+
+        });
+  
+        el.addEventListener('mouseleave', function () {
+          el.setAttribute('color', defaultColor);
+        });
+      }
+    });
+  </script>
+
     
     <body >
         <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
@@ -59,6 +93,7 @@ init: function() {
             scale="1 1 1"
             class="clickable"
             rotation="-90 0 0"
+            change-color-on-hover="color: blue"
             ></a-image>
 
             <a-entity id="debugTitle" position="1.5 0 -0.1" scale="2 2 2" rotation="-90 0 0" text="value: ar marker ;color:black"></a-entity>
