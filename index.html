@@ -115,8 +115,8 @@ var allowClick = false;
             if(allowClick)
         {
 
-            el.setAttribute('color', data.color);
-          clickCount+=1;
+           el.setAttribute('color', data.color);
+           clickCount+=1;
            // window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
            //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
             document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
@@ -144,15 +144,16 @@ var allowClick = false;
         <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern"  preset="custom" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt" >
 
 
-            <a-box  id="animated-model" color="skyblue" change-color-on-hover="color: blue" >
-            </a-box>
+           
+
+            <a-entity
+            id="animated-model" change-color-on-hover="color: blue" gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+            ></a-entity>
 
 
 
             <a-entity id="debugTitle" position="1.5 0 -0.1" scale="2 2 2" rotation="-90 0 0" text="value: marker not there ;color:black"></a-entity>
             <a-entity id="debugText"  position="1.5 0 0" scale="2 2 2" rotation="-90 0 0" text="value: status ;color:white"></a-entity>
-            
-            
         </a-marker>
 
         
